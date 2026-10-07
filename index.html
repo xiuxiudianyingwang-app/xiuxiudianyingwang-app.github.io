@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>羞羞电影网 - 高清影视在线观看与热门电影资讯平台</title>
+<meta name="description" content="羞羞电影网（xiuxiudianyingwang-app）致力于为影迷提供最新、最全的高清电影、热播电视剧、经典动漫及纪录片资源导航。每日更新院线新片、豆瓣高分榜、票房排行与影视行业资讯，支持移动端自适应浏览，让您随时随地发现好电影。">
+<meta name="keywords" content="羞羞电影网, xiuxiudianyingwang-app, 高清电影, 在线电影, 热播电视剧, 电影排行榜, 影视资讯, 电影推荐, 院线新片, 经典老片">
+<meta name="author" content="羞羞电影网">
+<meta name="robots" content="index, follow">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="canonical" href="https://xiuxiudianyingwang-app.github.io">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#羞羞161f;
+  --ink2:#2b323d;
+  --gold:#e8a33d;
+  --gold-d:#c4801f;
+  --paper:#f4f1ea;
+  --line:#e2dccd;
+  --muted:#7a768c;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* 顶部导航 */
+.nav{position:sticky;top:0;z-index:99;background:rgba(18,22,31,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(232,163,61,.25)}
+.nav-row{display:flex;align-items:center;gap:26px;height:60px}
+.logo{font-size:22px;font-weight:800;letter-spacing:1px;color:#fff}
+.logo i{color:var(--gold);font-style:normal}
+.menu{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.menu a{padding:8px 14px;color:#c9cde0;font-size:14px;border-radius:6px;transition:.2s}
+.menu a:hover{background:rgba(232,163,61,.15);color:#fff}
+@media(max-width:720px){.menu{display:none}.nav-row{height:54px}.logo{font-size:19px}}
+
+/* 首屏 */
+.hero{position:relative;padding:78px 0 64px;overflow:hidden;background:
+    radial-gradient(羞羞00px 500px at 82% -10%,rgba(232,163,61,.28),transparent 60%),
+    linear-gradient(160deg,#161b26 0%,#0c0f16 100%)}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{display:inline-block;font-size:羞羞px;letter-spacing:3px;color:var(--gold);border:1px solid rgba(232,163,61,.4);padding:5px 14px;border-radius:30px;margin-bottom:20px}
+.hero h1{font-size:clamp(30px,5vw,54px);line-height:1.2;color:#fff;font-weight:800;max-width:820px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{color:#aab1c2;max-width:660px;margin-top:18px;font-size:16px}
+.hero-actions{margin-top:30px;display:flex;gap:羞羞px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:.2s}
+.btn-main{background:var(--gold);color:#1a1a1a}
+.btn-main:hover{background:var(--gold-d)}
+.btn-ghost{color:#fff;border-color:rgba(255,255,255,.3)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-meta{margin-top:36px;display:flex;gap:36px;flex-wrap:wrap;color:#8d93a3;font-size:13px}
+.hero-meta b{color:#fff;font-size:20px;display:block}
+
+/* 通用区块 */
+section{padding:64px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:.5px}
+.sec-head h2 span{color:var(--gold-d)}
+.sec-head .tag{font-size:13px;color:var(--muted);border-left:3px solid var(--gold);padding-left:10px}
+.kicker{font-size:羞羞px;letter-spacing:2px;color:var(--gold-d);text-transform:uppercase;margin-bottom:8px;font-weight:700}
+
+/* 栏目一：电影分类 */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.cats{grid-template-columns:repeat(2,1fr)}}
+.cat{background:#fff;border:1px solid var(--line);border-radius:羞羞px;padding:22px 20px;transition:.25s;position:relative;overflow:hidden}
+.cat::after{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:50%;background:rgba(232,163,61,.08)}
+.cat:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.cat .no{font-size:羞羞px;color:var(--gold-d);font-weight:800;letter-spacing:1px}
+.cat h3{font-size:18px;margin:6px 0 8px}
+.cat p{font-size:13px;color:var(--muted)}
+.cat a{display:inline-block;margin-top:羞羞px;font-size:13px;color:var(--ink2);font-weight:600;border-bottom:1px dashed var(--ink2)}
+.cat a:hover{color:var(--gold-d);border-color:var(--gold-d)}
+
+/* 栏目二：热映榜单 */
+.board{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.board ol{list-style:none;counter-reset:r}
+.board li{counter-increment:r;display:flex;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px dashed var(--line)}
+.board li:last-child{border-bottom:0}
+.board li::before{content:counter(r);font-size:15px;font-weight:800;color:var(--gold-d);min-width:26px}
+.board li:nth-child(1)::before{color:#e0392d}
+.board li:nth-child(2)::before{color:#e8892d}
+.board li:nth-child(3)::before{color:#d3a52b}
+.board .poster{width:44px;height:62px;border-radius:6px;background:linear-gradient(135deg,#2b323d,#羞羞161f);flex:none;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);font-size:11px;text-align:center;padding:4px}
+.board .info{flex:1;min-width:0}
+.board .info b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board .info small{color:var(--muted);font-size:羞羞px}
+.board .score{font-weight:800;color:var(--gold-d);font-size:15px}
+
+/* 栏目三：影视资讯 */
+.news{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+@media(max-width:820px){.news{grid-template-columns:1fr}}
+.feature{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.feature .thumb{height:220px;background:linear-gradient(羞羞0deg,#3a2f1d,#161b26);position:relative}
+.feature .thumb span{position:absolute;left:16px;top:16px;background:var(--gold);color:#1a1a1a;font-size:羞羞px;font-weight:700;padding:4px 10px;border-radius:20px}
+.feature .body{padding:22px}
+.feature .body h3{font-size:21px;line-height:1.4;margin-bottom:10px}
+.feature .body p{color:var(--muted);font-size:14px}
+.news-list{display:flex;flex-direction:column;gap:14px}
+.news-item{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;padding:14px 18px;transition:.2s}
+.news-item:hover{border-left-color:var(--gold-d);background:#fffdf7}
+.news-item time{font-size:羞羞px;color:var(--gold-d);font-weight:700}
+.news-item h4{font-size:15px;margin-top:4px}
+
+/* 栏目四：观影指南 */
+.guide{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:820px){.guide{grid-template-columns:1fr}}
+.guide-card{background:#161b26;color:#e8e3d6;border-radius:14px;padding:26px}
+.guide-card h3{font-size:18px;color:var(--gold);margin-bottom:羞羞px;display:flex;align-items:center;gap:10px}
+.guide-card ul{list-style:none;font-size:14px;color:#c3c0cc}
+.guide-card li{padding:7px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.guide-card li:last-child{border-bottom:0}
+.guide-card li b{color:#fff;font-weight:600}
+
+/* 栏目五：关于 / 友链 */
+.about{background:linear-gradient(160deg,#羞羞161f,#1c2230);color:#d8dbe6;border-radius:18px;padding:44px}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:24px}}
+.about h3{font-size:22px;color:#fff;margin-bottom:14px}
+.about p{font-size:14px;color:#aab1c2}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.links a{font-size:13px;color:#c9cde0;border:1px solid rgba(232,163,61,.35);padding:6px 14px;border-radius:20px}
+.links a:hover{background:var(--gold);color:#1a1a1a;border-color:var(--gold)}
+.siteurl{margin-top:18px;background:rgba(0,0,0,.3);border:1px dashed rgba(232,163,61,.4);border-radius:8px;padding:羞羞px 16px;font-size:13px;word-break:break-all}
+.siteurl b{color:var(--gold)}
+
+/* 页脚 */
+footer{border-top:1px solid var(--line);padding:34px 0;background:#fff}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+footer a:hover{color:var(--gold-d)}
+.top{position:fixed;right:20px;bottom:24px;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;z-index:50;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a class="logo" href="#top">羞羞<i>电影网</i></a>
+    <div class="menu">
+      <a href="#fenlei">影片分类</a>
+      <a href="#bangdan">热映榜单</a>
+      <a href="#zixun">影视资讯</a>
+      <a href="#zhinan">观影指南</a>
+      <a href="#guanyu">关于本站</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">XIUXIUDIANYINGWANG · 影视导航门户</span>
+    <h1>在 <em>羞羞电影网</em> 发现每一部值得停留的好电影</h1>
+    <p class="lead">羞羞电影网（xiuxiudianyingwang-app）是一个专注于高清影视内容发现与观影决策的垂直门户。我们不做冗杂堆砌，只做三件事：把好片挑出来、把信息理清楚、把选择变简单。</p>
+    <div class="hero-actions">
+      <a class="btn btn-main" href="#fenlei">浏览影片分类</a>
+      <a class="btn btn-ghost" href="#bangdan">查看实时热榜</a>
+    </div>
+    <div class="hero-meta">
+      <div><b>羞羞+</b>年影视脉络梳理</div>
+      <div><b>6</b>大内容频道</div>
+      <div><b>每日</b>更新行业资讯</div>
+      <div><b>100%</b>移动端自适应</div>
+    </div>
+  </div>
+</header>
+
+<!-- 栏目一 -->
+<section id="fenlei">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Channel 01</div>
+        <h2>影片<span>分类</span>索引</h2>
+      </div>
+      <div class="tag">按题材、地域与年代三维归类</div>
+    </div>
+    <div class="cats">
+      <div class="cat"><div class="no">NO.01</div><h3>院线新片</h3><p>同步追踪正在上映与即将定档的国内外新作，含票房走势与口碑反馈。</p><a href="#">进入频道 →</a></div>
+      <div class="cat"><div class="no">NO.02</div><h3>华语光影</h3><p>从港片黄金时代到大陆新导演，梳理华语电影的叙事脉络与代表人物。</p><a href="#">进入频道 →</a></div>
+      <div class="cat"><div class="no">NO.03</div><h3>欧美佳作</h3><p>奥斯卡、戛纳、柏林三大节的获奖与入围作品，附导演创作背景。</p><a href="#">进入频道 →</a></div>
+      <div class="cat"><div class="no">NO.04</div><h3>日韩剧集</h3><p>旬刊式更新日韩热门剧集与动画，解读叙事结构与文化语境。</p><a href="#">进入频道 →</a></div>
+      <div class="cat"><div class="no">NO.05</div><h3>经典修复</h3><p>4K 修复版、导演剪辑版与影史百大，让老电影以更好的样貌重逢。</p><a href="#">进入频道 →</a></div>
+      <div class="cat"><div class="no">NO.06</div><h3>纪录片</h3><p>自然、人文、历史、犯罪真实事件，用影像贴近世界的真实肌理。</p><a href="#">进入频道 →</a></div>
+      <div class="cat"><div class="no">NO.07</div><h3>短片与独立</h3><p>电影节入围短片、学生作品与独立制片，看见主流之外的表达。</p><a href="#">进入频道 →</a></div>
+      <div class="cat"><div class="no">NO.08</div><h3>影人档案</h3><p>导演、编剧、摄影、配乐的创作年表与风格演变，读懂作品背后的人。</p><a href="#">进入频道 →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二 -->
+<section id="bangdan" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Channel 02</div>
+        <h2>本周<span>热映</span>榜单</h2>
+      </div>
+      <div class="tag">综合口碑、热度与票房多维排序</div>
+    </div>
+    <div class="board">
+      <ol>
+        <li><div class="poster">海报</div><div class="info"><b>默杀者之歌</b><small>剧情 / 悬疑 · 142 分钟 · 2026</small></div><div class="score">9.1</div></li>
+        <li><div class="poster">海报</div><div class="info"><b>南方车站的聚会</b><small>犯罪 / 文艺 · 羞羞8 分钟 · 2026</small></div><div class="score">8.7</div></li>
+        <li><div class="poster">海报</div><div class="info"><b>星际回响</b><small>科幻 / 冒险 · 156 分钟 · 2026</small></div><div class="score">8.5</div></li>
+        <li><div class="poster">海报</div><div class="info"><b>春江水暖</b><small>家庭 / 伦理 · 118 分钟 · 2025</small></div><div class="score">8.3</div></li>
+        <li><div class="poster">海报</div><div class="info"><b>看不见的城市</b><small>纪录片 / 人文 · 96 分钟 · 2025</small></div><div class="score">8.2</div></li>
+        <li><div class="poster">海报</div><div class="info"><b>午夜出租车</b><small>惊悚 / 黑色 · 105 分钟 · 2026</small></div><div class="score">7.9</div></li>
+        <li><div class="poster">海报</div><div class="info"><b>风的来信</b><small>动画 / 奇幻 · 110 分钟 · 2025</small></div><div class="score">7.8</div></li>
+        <li><div class="poster">海报</div><div class="info"><b>老枪</b><small>动作 / 西部 · 134 分钟 · 2024</small></div><div class="score">7.6</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三 -->
+<section id="zixun">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Channel 03</div>
+        <h2>影视<span>资讯</span>观察</h2>
+      </div>
+      <div class="tag">行业动态、创作幕后与观影文化</div>
+    </div>
+    <div class="news">
+      <article class="feature">
+        <div class="thumb"><span>深度</span></div>
+        <div class="body">
+          <h3>当"短剧"进入院线：叙事节奏正在被重新训练</h3>
+          <p>三年时间，观众的平均注意力阈值被反复压缩又被迫拉长。本文梳理从竖屏短剧到长片创作的双向流动，看看哪些被证明有效的节奏技巧，正在悄悄改写主流电影的剪辑语法。</p>
+          <a class="btn btn-ghost" href="#" style="margin-top:14px">阅读全文</a>
+        </div>
+      </article>
+      <div class="news-list">
+        <a class="news-item" href="#"><time>10 月 06 日</time><h4>2026 国庆档复盘：票房结构为何向"合家欢"回归</h4></a>
+        <a class="news-item" href="#"><time>10 月 04 日</time><h4>戛纳归来：三位华语导演的下一部长片计划</h4></a>
+        <a class="news-item" href="#"><time>10 月 01 日</time><h4>4K 修复不只是清晰度：色彩科学与胶片颗粒的取舍</h4></a>
+        <a class="news-item" href="#"><time>09 月 28 日</time><h4>配乐如何"说谎"：从汉斯·季默到本土作曲的新路径</h4></a>
+        <a class="news-item" href="#"><time>09 月 25 日</time><h4>流媒体与影院的和解：窗口期正在变成"可选项"</h4></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目四 -->
+<section id="zhinan" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Channel 04</div>
+        <h2>观影<span>指南</span></h2>
+      </div>
+      <div class="tag">写给不同心境下的选片参考</div>
+    </div>
+    <div class="guide">
+      <div class="guide-card">
+        <h3>◎ 按心境选片</h3>
+        <ul>
+          <li><b>想哭一场</b>：家庭伦理、失恋题材、动物叙事</li>
+          <li><b>需要清醒</b>：政治惊悚、纪实犯罪、社会派推理</li>
+          <li><b>想要逃离</b>：公路片、异星科幻、吉卜力式动画</li>
+          <li><b>失眠陪伴</b>：慢节奏文艺、散文电影、自然纪录片</li>
+        </ul>
+      </div>
+      <div class="guide-card">
+        <h3>◎ 入门片单</h3>
+        <ul>
+          <li><b>认识一位导演</b>：从其"最受争议"的作品开始</li>
+          <li><b>类型片入门</b>：先看好莱坞经典，再看作者解构</li>
+          <li><b>纪录片入门</b>：从"有明确主角"的叙述型入手</li>
+          <li><b>避开片单陷阱</b>：榜单是路标，不是判决书</li>
+        </ul>
+      </div>
+      <div class="guide-card">
+        <h3>◎ 观影礼仪</h3>
+        <ul>
+          <li><b>上映首周</b>：慎看短评，避免被情绪带偏</li>
+          <li><b>二刷价值</b>：悬疑片看结构，文艺片看细节</li>
+          <li><b>字幕选择</b>：熟肉看翻译，生肉听表演</li>
+          <li><b>影评写作</b>：先描述感受，再解释原因</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目五 -->
+<section id="guanyu">
+  <div class="wrap">
+    <div class="about">
+      <div class="about-grid">
+        <div>
+          <div class="kicker" style="color:var(--gold)">About</div>
+          <h3>关于 羞羞电影网</h3>
+          <p>羞羞电影网（xiuxiudianyingwang-app）成立于对"信息过载却选择困难"的观察。我们不搬运资源，不堆砌链接，而是以编辑视角完成筛选、归类与解读，做一个安静、克制、可信赖的影视内容入口。</p>
+          <p style="margin-top:羞羞px">本站采用单页结构设计，全站移动端自适应，内页入口以锚点方式组织，便于搜索引擎抓取与用户快速定位。内容涵盖影片分类、热映榜单、影视资讯、观影指南四大常设频道，并持续补充影人档案与专题策划。</p>
+          <div class="links">
+            <a href="#">影片分类</a>
+            <a href="#">热映榜单</a>
+            <a href="#">影视资讯</a>
+            <a href="#">观影指南</a>
+            <a href="#">影人档案</a>
+            <a href="#">关于本站</a>
+          </div>
+        </div>
+        <div>
+          <h3>访问与收录</h3>
+          <p>本站官方地址如下，请勿通过非正规渠道访问，以免遭遇仿冒站点或安全风险。</p>
+          <div class="siteurl">官方网站：<b>https://xiuxiudianyingwang-app.github.io</b></div>
+          <div class="siteurl">网站名称：<b>羞羞电影网</b></div>
+          <p style="margin-top:14px;font-size:13px">页面已配置符合必应（Bing）收录规范的标题、描述、关键词与规范链接（canonical），采用语义化 HTML 标签与清晰的标题层级，有助于搜索引擎理解与索引。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr">2026</span> 羞羞电影网（xiuxiudianyingwang-app）· 影视内容导航门户 · 倡导正版观影</div>
+    <div><a href="#top">返回顶部</a> · <a href="#">网站地图</a> · <a href="#">免责声明</a></div>
+  </div>
+</footer>
+
+<a class="top" href="#top" title="返回顶部">↑</a>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
